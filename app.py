@@ -24,7 +24,7 @@ def predict(message, history, request: gr.Request):
     "temperature": 1
     }
 
-    headers = {"Authorization": "Bearer " + os.getenv("AUTH_TOKEN")}
+    headers = {"Authorization": "Bearer " + request.headers["authorization"]}
     response = requests.post(url, json=data, headers=headers, verify=False)
     result = json.loads(response.text)
 
